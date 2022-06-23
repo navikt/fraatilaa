@@ -16,6 +16,7 @@ class QuizApplication(private val teamName: String, database: Database? = null):
     override fun handle(question: Question) {
         logger.log(question)
         if (question.category == "team-registration") handleRegisterTeam(question)
+        if (question.category == "arithmetic") solveArithmetic(question)
     }
 
 
@@ -29,6 +30,28 @@ class QuizApplication(private val teamName: String, database: Database? = null):
 
     private fun handleRegisterTeam(question: Question) {
         answer(question.category, question.messageId, "fraatilaa")
+    }
+
+    private fun solveArithmetic(question: Question) {
+        val questionString = question.question
+        val list = questionString.split("\\s".toRegex()).toTypedArray()
+        val firstNumber = list[0].toInt()
+        val lastNumber = list[2].toInt()
+        val operator = list[1]
+
+        var answer = 0
+
+        if(operator == "+") {
+            answer = firstNumber + lastNumber
+        } else if (operator == "-"){
+            answer = firstNumber - lastNumber
+        } else if (operator == "/"){
+            answer = (firstNumber / lastNumber).toInt()
+        } else if (operator == "*"){
+            answer = firstNumber * lastNumber
+        }
+
+        answer(question.category, question.messageId, answer.toString())
     }
 
 }
