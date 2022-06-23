@@ -28,7 +28,7 @@ class QuizApplication(private val teamName: String, database: Database? = null):
      */
 
     private fun handleRegisterTeam(question: Question) {
-        answer("test", "123", "fraAtilAA")
+        answer(question.category, question.messageId, "fraatilaa")
     }
 
 }
