@@ -18,6 +18,7 @@ class QuizApplication(private val teamName: String, database: Database? = null):
         if (question.category == "team-registration") handleRegisterTeam(question)
         if (question.category == "arithmetic") solveArithmetic(question)
         if (question.category == "make-ingress") solveIngress(question)
+        if (question.category == "NAV") solveQuiz(question)
     }
 
 
@@ -59,4 +60,12 @@ class QuizApplication(private val teamName: String, database: Database? = null):
         answer(question.category, question.messageId, "https://fraatilaa.dev.intern.nav.no")
     }
 
+    private fun solveQuiz(question: Question) {
+        if(question.question.startsWith("Hva heter")) {
+            answer(question.category, question.messageId, "naisdevice")
+        }
+        if(question.question.startsWith("På hvilken")) {
+            answer(question.category, question.messageId, "https://arbeidsplassen.nav.no/stillinger?q=NAVstilling&occupationFirstLevels[]=IT")
+        }
+    }
 }
