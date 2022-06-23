@@ -28,7 +28,7 @@ class QuizApplication(private val teamName: String, database: Database? = null):
      */
 
     private fun handleRegisterTeam(question: Question) {
-        TODO("Her må du skrive kode ;)")
+        answer("test", "123", "fraAtilAA")
     }
 
 }
