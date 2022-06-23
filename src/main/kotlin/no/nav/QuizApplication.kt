@@ -17,6 +17,7 @@ class QuizApplication(private val teamName: String, database: Database? = null):
         logger.log(question)
         if (question.category == "team-registration") handleRegisterTeam(question)
         if (question.category == "arithmetic") solveArithmetic(question)
+        if (question.category == "make-ingress") solveIngress(question)
     }
 
 
@@ -52,6 +53,10 @@ class QuizApplication(private val teamName: String, database: Database? = null):
         }
 
         answer(question.category, question.messageId, answer.toString())
+    }
+
+    private fun solveIngress(question: Question){
+        answer(question.category, question.messageId, "https://fraatilaa.dev.intern.nav.no")
     }
 
 }
